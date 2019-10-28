@@ -2,15 +2,43 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Flask Tutorial</title>
+    <title>Menu App</title>
   </head>
   <body>
-    {% extends "template.html" %}
-    {% block content %}
 
-    <h1> My First Try Using Flask </h1>
-    <p> Flask is Fun </p>
+    <h1> List of Menus </h1>
+    <h2> Brody </h2>
+    {%- for line in Brody -%}
+        {{ line }}
+        {%- if not loop.last -%}
+            <br />
+        {%- endif -%}
+    {%- endfor -%}
 
-    {% endblock %}
+    <h2> Case </h2>
+    <p> {{Case}} </p>
+
+    <h2> Holden </h2>
+    <p> {{Holden}} </p>
+
+    <h2> Holmes </h2>
+    <p> {{Holmes}} </p>
+
+    <h2> Landon </h2>
+    <p> {{Landon}} </p>
+
+    <h2> Owen </h2>
+    <p> {{Owen}} </p>
+
+    <h2> Shaw </h2>
+    <p> {{Shaw}} </p>
+
+    <h2> Snyder Phillips </h2>
+    <p> {{Snyder_Phillips}} </p>
+
+    <h2> Wilson </h2>
+    <p> {{Wilson}} </p>
+
+
   </body>
 </html>
