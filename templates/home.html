@@ -1,16 +1,36 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Flask Tutorial</title>
   </head>
   <body>
-    {% extends "template.html" %}
-    {% block content %}
+      {% extends "template.html" %}
+      {% block content %}
 
-    <h1> My First Try Using Flask </h1>
-    <p> Flask is Fun </p>
+      <h1> List of Menus </h1>
+      {% for line in data.keys() %}
+        <h2>{{data[line].hallname}}</h2>
+        <h3>Breakfast</h3>
+        <ol>
+            {% for food in data[line].breakfast %}
+            <li>{{food.string}}</li>
+            {%- endfor -%}
+        </ol>
+        <h3>Lunch</h3>
+        <ol>
+            {% for food in data[line].lunch %}
+            <li>{{food.string}}</li>
+            {%- endfor -%}
+        </ol>
+        <h3>Dinner</h3>
+        <ol>
+            {% for food in data[line].dinner %}
+            <li>{{food.string}}</li>
+            {%- endfor -%}
+        </ol>
+      {%- endfor -%}
 
-    {% endblock %}
+      {% endblock %}
   </body>
 </html>
