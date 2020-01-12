@@ -7,6 +7,7 @@ import json
 with open('menus.json') as json_file:
     data = json.load(json_file)
 
+
 app = Flask(__name__)
 
 @app.route("/")

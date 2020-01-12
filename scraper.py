@@ -16,10 +16,10 @@ class Halls:
     
     def set_meal(self, meal):
         self.results = self.soup.find_all("div", class_=f"meal-title {meal}")
-        self.meal_menu = ""
+        self.meal_menu = []
 
         for item in self.results:
-            self.meal_menu += f"{item.string} "
+            self.meal_menu.append(item.string)
         
         return self.meal_menu
 
