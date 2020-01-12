@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import urllib3
 import json
 import datetime
-
+# Used this https://stackabuse.com/reading-and-writing-json-to-a-file-in-python/
 class Halls:
     def __init__(self):
         self.hall_menu = {} # used to store breakfast lunch and dinner for each hall
@@ -56,12 +56,13 @@ class Halls:
                 self.hall_menu_json = json.dumps(self.hall_menu)
 
                 self.daily_menu[hall] = self.hall_menu_json
-
+            self.daily_menu["date"] = self.date_str
             self.daily_menu_json = json.dumps(self.daily_menu)
-            self.weekly_menu[self.date_str] = self.daily_menu_json
+            self.weekly_menu[f"day_{i}"] = self.daily_menu_json
         self.weekly_menu_json = json.dumps(self.weekly_menu)
 
     def write_menus(self):
+        open('menus.json', 'w').close()
         print("Writing to json file")
         with open('menus.json', 'w') as outfile:
             json.dump(self.weekly_menu_json, outfile, ensure_ascii=False, indent=4, separators=(',', ': '))
