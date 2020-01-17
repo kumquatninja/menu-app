@@ -5,7 +5,6 @@ fetch("http://127.0.0.1:5000/menus")
         return resp.json();
     })
     .then(function(data){
-        //document.getElementById("day_0").innerHTML = data.day_0;
 
         for (let day in data) {
             dayJson = JSON.parse(data[day]);
@@ -40,6 +39,7 @@ fetch("http://127.0.0.1:5000/menus")
                         let menu_element = document.createElement("div");
                         menu_element.setAttribute("class", "menu");
 
+                        //BREAKFAST
                         let breakfast_element = document.createElement("div");
                         breakfast_element.setAttribute("class", "breakfast");
 
@@ -61,6 +61,7 @@ fetch("http://127.0.0.1:5000/menus")
                         }
                         breakfast_element.appendChild(breakfastList);
         
+                        //LUNCH
                         let lunch_element = document.createElement("div");
                         lunch_element.setAttribute("class", "lunch");
 
@@ -82,6 +83,7 @@ fetch("http://127.0.0.1:5000/menus")
                         }
                         lunch_element.appendChild(lunchList);
                         
+                        //DINNER
                         let dinner_element = document.createElement("div");
                         dinner_element.setAttribute("class", "dinner");
 
@@ -103,9 +105,36 @@ fetch("http://127.0.0.1:5000/menus")
                         }
                         dinner_element.appendChild(dinnerList);
 
+                        //LATE NIGHT
+                        let late_night_element = document.createElement("div");
+                        late_night_element.setAttribute("class", "late night");
+
+                        let lateNightTitle = document.createElement("h3");
+                        let lateNightTitleText = document.createTextNode("late night");
+                        lateNightTitle.appendChild(lateNightTitleText);
+                        late_night_element.appendChild(lateNightTitle);
+
+                        let lateNightList = document.createElement("ul");
+                        lateNightList.setAttribute("class", "list");
+
+                        menu_let["late night"].forEach(lateNightArrayFunction); 
+                        function lateNightArrayFunction(menu_item, index) 
+                        {
+                            let lateNightMenuItem = document.createElement("li");
+                            let lateNightMenuItemText = document.createTextNode(menu_item);
+                            lateNightMenuItem.appendChild(lateNightMenuItemText);
+                            lateNightList.appendChild(lateNightMenuItem);
+                        }
+                        late_night_element.appendChild(lateNightList);
+
+
+                        //append to menu
                         menu_element.appendChild(breakfast_element);
                         menu_element.appendChild(lunch_element);
                         menu_element.appendChild(dinner_element);
+                        menu_element.appendChild(late_night_element);
+
+
                         hall_element.appendChild(menu_element);
                         weekElement.appendChild(hall_element);
                     }

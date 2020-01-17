@@ -4,9 +4,6 @@ import urllib3
 import datetime
 import json
 
-with open('menus.json') as json_file:
-    data = json.load(json_file)
-
 
 app = Flask(__name__)
 
@@ -20,6 +17,8 @@ def about():
 
 @app.route("/menus")
 def menus():
+    with open('menus.json') as json_file:
+        data = json.load(json_file)
     return data
 
 if __name__ == "__main__":

@@ -52,6 +52,7 @@ class Halls:
                 self.hall_menu["breakfast"] = self.set_meal("breakfast")
                 self.hall_menu["lunch"] = self.set_meal("lunch")
                 self.hall_menu["dinner"] = self.set_meal("dinner")
+                self.hall_menu["late night"] = self.set_meal("late night")
 
                 self.hall_menu_json = json.dumps(self.hall_menu)
 
