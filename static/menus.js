@@ -1,3 +1,38 @@
+function mealElement(meal, menuObject)
+{
+    if (menuObject[meal].length == 0)
+    {
+        return false;
+    }
+    let mealElement = document.createElement("div");
+    mealElement.setAttribute("class", meal);
+
+    // set the title of meal h tag
+    let mealTitle = document.createElement("h3");
+    let mealTitleText = document.createTextNode(meal);
+    mealTitle.appendChild(mealTitleText);
+    mealElement.appendChild(mealTitle);
+
+    let mealList = document.createElement("ul");
+    mealList.setAttribute("class", "list");
+
+    //iterate through meal in menu object and add to div
+    menuObject[meal].forEach(mealArrayFunction);
+    function mealArrayFunction(menuItem, index)
+    {
+        let mealMenuItem = document.createElement("li");
+        let mealMenuItemText = document.createTextNode(menuItem);
+        mealMenuItem.appendChild(mealMenuItemText);
+        mealList.appendChild(mealMenuItem);
+    }
+
+    mealElement.appendChild(mealList);
+
+    return mealElement;
+
+
+}// meal element function
+
 //tutorial for fetching json data
 //https://www.youtube.com/watch?v=1tVCwv_BX2M
 fetch("http://127.0.0.1:5000/menus")
@@ -12,8 +47,6 @@ fetch("http://127.0.0.1:5000/menus")
             weekElement.setAttribute("class", "week");
             weekElement.setAttribute("id", dayJson.date);
 
-            console.log(dayJson.date);
-
             let weekTitle = document.createElement("h1");
             let weekTitleText = document.createTextNode(dayJson.date);
             weekTitle.appendChild(weekTitleText);
@@ -25,121 +58,65 @@ fetch("http://127.0.0.1:5000/menus")
                     if (hall == "date"){}
                     else{
 
-                        let hall_element = document.createElement("div");
-                        hall_element.setAttribute("class", "hall");
-                        hall_element.setAttribute("id", hall);
+                        let hallElement = document.createElement("div");
+                        hallElement.setAttribute("class", "hall");
+                        hallElement.setAttribute("id", hall);
 
                         let hallTitle = document.createElement("h2");
                         let hallTitleText = document.createTextNode(hall);
                         hallTitle.appendChild(hallTitleText);
-                        hall_element.appendChild(hallTitle);
+                        hallElement.appendChild(hallTitle);
 
-                        let menu_let = JSON.parse(dayJson[hall]);
+                        let menuLet = JSON.parse(dayJson[hall]);
 
-                        let menu_element = document.createElement("div");
-                        menu_element.setAttribute("class", "menu");
+                        let menuElement = document.createElement("div");
+                        menuElement.setAttribute("class", "menu");
 
-                        //BREAKFAST
-                        let breakfast_element = document.createElement("div");
-                        breakfast_element.setAttribute("class", "breakfast");
-
-                        let breakfastTitle = document.createElement("h3");
-                        let breakfastTitleText = document.createTextNode("breakfast");
-                        breakfastTitle.appendChild(breakfastTitleText);
-                        breakfast_element.appendChild(breakfastTitle);
-
-                        let breakfastList = document.createElement("ul");
-                        breakfastList.setAttribute("class", "list");
-
-                        menu_let["breakfast"].forEach(breakfastArrayFunction); 
-                        function breakfastArrayFunction(menu_item, index) 
+                        for (meal in menuLet)
                         {
-                            let breakfastMenuItem = document.createElement("li");
-                            let breakfastMenuItemText = document.createTextNode(menu_item);
-                            breakfastMenuItem.appendChild(breakfastMenuItemText);
-                            breakfastList.appendChild(breakfastMenuItem);
-                        }
-                        breakfast_element.appendChild(breakfastList);
-        
-                        //LUNCH
-                        let lunch_element = document.createElement("div");
-                        lunch_element.setAttribute("class", "lunch");
-
-                        let lunchTitle = document.createElement("h3");
-                        let lunchTitleText = document.createTextNode("lunch");
-                        lunchTitle.appendChild(lunchTitleText);
-                        lunch_element.appendChild(lunchTitle);
-
-                        let lunchList = document.createElement("ul");
-                        lunchList.setAttribute("class", "list");
-
-                        menu_let["lunch"].forEach(lunchArrayFunction); 
-                        function lunchArrayFunction(menu_item, index) 
-                        {
-                            let lunchMenuItem = document.createElement("li");
-                            let lunchMenuItemText = document.createTextNode(menu_item);
-                            lunchMenuItem.appendChild(lunchMenuItemText);
-                            lunchList.appendChild(lunchMenuItem);
-                        }
-                        lunch_element.appendChild(lunchList);
-                        
-                        //DINNER
-                        let dinner_element = document.createElement("div");
-                        dinner_element.setAttribute("class", "dinner");
-
-                        let dinnerTitle = document.createElement("h3");
-                        let dinnerTitleText = document.createTextNode("dinner");
-                        dinnerTitle.appendChild(dinnerTitleText);
-                        dinner_element.appendChild(dinnerTitle);
-
-                        let dinnerList = document.createElement("ul");
-                        dinnerList.setAttribute("class", "list");
-
-                        menu_let["dinner"].forEach(dinnerArrayFunction); 
-                        function dinnerArrayFunction(menu_item, index) 
-                        {
-                            let dinnerMenuItem = document.createElement("li");
-                            let dinnerMenuItemText = document.createTextNode(menu_item);
-                            dinnerMenuItem.appendChild(dinnerMenuItemText);
-                            dinnerList.appendChild(dinnerMenuItem);
-                        }
-                        dinner_element.appendChild(dinnerList);
-
-                        //LATE NIGHT
-                        let late_night_element = document.createElement("div");
-                        late_night_element.setAttribute("class", "late night");
-
-                        let lateNightTitle = document.createElement("h3");
-                        let lateNightTitleText = document.createTextNode("late night");
-                        lateNightTitle.appendChild(lateNightTitleText);
-                        late_night_element.appendChild(lateNightTitle);
-
-                        let lateNightList = document.createElement("ul");
-                        lateNightList.setAttribute("class", "list");
-
-                        menu_let["late night"].forEach(lateNightArrayFunction); 
-                        function lateNightArrayFunction(menu_item, index) 
-                        {
-                            let lateNightMenuItem = document.createElement("li");
-                            let lateNightMenuItemText = document.createTextNode(menu_item);
-                            lateNightMenuItem.appendChild(lateNightMenuItemText);
-                            lateNightList.appendChild(lateNightMenuItem);
-                        }
-                        late_night_element.appendChild(lateNightList);
-
+                            switch(meal)
+                            {
+                                case "breakfast":
+                                    let breakfastElement = mealElement(meal, menuLet);
+                                    if(breakfastElement == false)
+                                    {break;}
+                                    else{
+                                    menuElement.appendChild(breakfastElement);
+                                    }
+                                    break;
+                                case "lunch":
+                                    let lunchElement = mealElement(meal, menuLet);
+                                    if(lunchElement == false)
+                                    {break;}
+                                    else{
+                                    menuElement.appendChild(lunchElement);
+                                    }
+                                    break;
+                                case "dinner":
+                                    let dinnerElement = mealElement(meal, menuLet);
+                                    if(dinnerElement == false)
+                                    {break;}
+                                    else{
+                                    menuElement.appendChild(dinnerElement);
+                                    }
+                                    break;
+                                case "late night":
+                                    let lateNightElement = mealElement(meal, menuLet);
+                                    if(lateNightElement == false)
+                                    {break;}
+                                    else{
+                                    menuElement.appendChild(lateNightElement);
+                                    }
+                            }//switch
+                        }//for meal in menu
 
                         //append to menu
-                        menu_element.appendChild(breakfast_element);
-                        menu_element.appendChild(lunch_element);
-                        menu_element.appendChild(dinner_element);
-                        menu_element.appendChild(late_night_element);
+                        hallElement.appendChild(menuElement);
+                        weekElement.appendChild(hallElement);
 
-
-                        hall_element.appendChild(menu_element);
-                        weekElement.appendChild(hall_element);
-                    }
+                    }//date
                 }//if
-            }//for
+            }//for halls
             document.body.appendChild(weekElement);
         }//for day in week
     })
