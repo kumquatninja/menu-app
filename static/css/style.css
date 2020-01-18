@@ -1,0 +1,15 @@
+h1, h2, h3, h4, h5{
+    text-align: center;
+}
+
+div.hall{
+    border: solid;
+}
+
+div.breakfast, div.lunch, div.dinner, div.late.night{
+    border: solid;
+}
+
+div.menu {
+    display: inline-flex;
+}
