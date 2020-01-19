@@ -63,7 +63,7 @@ class Halls:
         self.weekly_menu_json = json.dumps(self.weekly_menu)
 
     def write_menus(self):
-        open('menus.json', 'w').close()
+        open('../menus.json', 'w').close()
         print("Writing to json file")
         with open('menus.json', 'w') as outfile:
             json.dump(self.weekly_menu_json, outfile, ensure_ascii=False, indent=4, separators=(',', ': '))
@@ -86,4 +86,4 @@ def update_menu():
 
     print('Menus scraped successfully')
 
-update_menu()
+#update_menu()

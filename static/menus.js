@@ -35,7 +35,7 @@ function mealElement(meal, menuObject)
 
 //tutorial for fetching json data
 //https://www.youtube.com/watch?v=1tVCwv_BX2M
-fetch("http://127.0.0.1:5000/menus")
+fetch("/menus")
     .then(function(resp){
         return resp.json();
     })

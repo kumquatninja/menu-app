@@ -3,3 +3,4 @@ gunicorn==19.9.0
 BeautifulSoup4
 urllib3
 datetime
+apscheduler

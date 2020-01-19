@@ -1,3 +1,4 @@
 cron:
-- description: "daily menu fetch"
-  schedule: every 24 hours
+- description: "update menus every hour"
+  url: /tasks
+  schedule: every 10 mins

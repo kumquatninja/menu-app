@@ -1,12 +1,18 @@
 from flask import Flask, render_template
 from bs4 import BeautifulSoup
+# from apscheduler.schedulers.background import BackgroundScheduler
+from tasks import scraper
 import urllib3
 import datetime
 import json
 
 
 app = Flask(__name__)
-
+'''
+sched = BackgroundScheduler(daemon=True)
+sched.add_job(lambda : scraper.update_menu(),'cron',hour='*')
+sched.start()
+'''
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -14,6 +20,10 @@ def home():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+@app.route("/tasks")
+def tasks():
+    scraper.update_menu()
 
 @app.route("/menus")
 def menus():
