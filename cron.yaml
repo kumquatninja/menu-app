@@ -1,1 +1,4 @@
 cron:
+- description: "update menus every day"
+  url: /update_menus
+  schedule: every 1 hours

@@ -8,11 +8,13 @@ import json
 
 
 app = Flask(__name__)
+
 '''
 sched = BackgroundScheduler(daemon=True)
-sched.add_job(lambda : scraper.update_menu(),'cron',hour='*')
+sched.add_job(lambda : scraper.update_menu(),'cron',minute='*')
 sched.start()
 '''
+
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -21,9 +23,12 @@ def home():
 def about():
     return render_template("about.html")
 
-@app.route("/tasks")
-def tasks():
+@app.route("/update_menus")
+def update_menus():
     scraper.update_menu()
+    with open('menus.json') as json_file:
+        data = json.load(json_file)
+    return data
 
 @app.route("/menus")
 def menus():

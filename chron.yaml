@@ -1,4 +1,0 @@
-cron:
-- description: "update menus every hour"
-  url: /tasks
-  schedule: every 10 mins
