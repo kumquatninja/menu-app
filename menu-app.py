@@ -31,6 +31,7 @@ for hall in dining_hall_dict:
         print(item.string)
     print()
 
+'''
 app = Flask(__name__)
 
 @app.route("/")
@@ -43,3 +44,4 @@ def about():
 
 if __name__ == "__main__":
     app.run(debug=True)
+'''
