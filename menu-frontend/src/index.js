@@ -5,6 +5,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 import Card from "./components/card";
+import "./components/fetchMenu";
 
 ReactDOM.render(<Card />, document.getElementById("root"));
 
