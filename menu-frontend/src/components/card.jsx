@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import axios from "axios";
+// remember to uninstall axios module
 
 class Card extends Component {
   constructor() {
     super();
     this.state = {
-      days: []
+      akersBreakfast: []
     };
   }
 
@@ -15,17 +15,27 @@ class Card extends Component {
         return response.json();
       })
       .then(data => {
-        console.log(data);
-        this.setState({ days: data });
+        this.setState({
+          akersBreakfast: JSON.parse(JSON.parse(data["day_0"])["AKERS"])[
+            "breakfast"
+          ]
+        });
+        console.log(this.state);
       });
   }
 
   render() {
+    let items = this.state.akersBreakfast.map(item => <li>{item}</li>);
+    console.log(items);
     return (
       <div>
-        <div className="container1">{this.state.data}</div>
-        <div class="card">
-          <div class="card-body">This is some text within a card body.</div>
+        <div className="card">
+          <div className="card-body">
+            <h5 className="card-title text-center">Akers</h5>
+            <p className="card-text">
+              <ul>{items}</ul>
+            </p>
+          </div>
         </div>
       </div>
     );
