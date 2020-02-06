@@ -5,6 +5,7 @@ class Card extends Component {
   constructor() {
     super();
     this.state = {
+      hall: "akers",
       akersBreakfast: []
     };
   }
@@ -25,11 +26,13 @@ class Card extends Component {
   }
 
   render() {
-    let items = this.state.akersBreakfast.map(item => <li>{item}</li>);
+    let items = this.state.akersBreakfast.map(item => (
+      <li key={item}>{item}</li>
+    ));
     console.log(items);
     return (
       <div>
-        <div className="card">
+        <div className="card" width="18rem">
           <div className="card-body">
             <h5 className="card-title text-center">Akers</h5>
             <p className="card-text">
