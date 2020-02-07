@@ -1,9 +1,14 @@
 .font-weight-light {
+  font-variant: small-caps;
   text-align: center;
 }
 
 .card {
   margin: 20px;
+}
+
+.card-title {
+  font-variant: small-caps;
 }
 
 .card ul {

@@ -1,24 +1,23 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import CardCarousel from "./components/CardCarousel";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      todos: []
-    };
-  }
+  ShowCurrentDate = () => {
+    var date = new Date().getDate();
+    var month = new Date().getMonth() + 1;
+    var year = new Date().getFullYear();
 
+    return month + "-" + date + "-" + year;
+  };
   render() {
     return (
-      <div>
-        <input placeholder="Enter todo" />
-        <button>Add!</button>
-        {this.state.todos.length === 0
-          ? "No todos yet"
-          : "You still have some todos"}
-      </div>
+      <header>
+        <h2 className="font-weight-light">Menu App</h2>
+        <h4 className="font-weight-light">{this.ShowCurrentDate()}</h4>
+        <CardCarousel />
+      </header>
     );
   }
 }
