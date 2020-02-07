@@ -6,9 +6,15 @@ class CardCarousel extends Component {
   state = {
     halls: [
       { id: "AKERS", items: 0 },
+      { id: "SNYDER_PHILLIPS", items: 0 },
       { id: "CASE", items: 0 },
       { id: "BRODY", items: 0 },
-      { id: "SHAW", items: 0 }
+      { id: "SHAW", items: 0 },
+      { id: "OWEN", items: 0 },
+      { id: "LANDON", items: 0 },
+      { id: "HOLDEN", items: 0 },
+      { id: "WILSON", items: 0 },
+      { id: "HOLMES", itmes: 0 }
     ]
   };
 
