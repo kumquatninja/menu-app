@@ -5,6 +5,7 @@ class Card extends Component {
   state = {
     hall: this.props.id,
     day: "day_0",
+    meal: this.props.value,
     items: []
   };
 
@@ -16,8 +17,10 @@ class Card extends Component {
       .then(data => {
         let hallName = this.state.hall;
         let day = this.state.day;
+        let meal = this.state.meal;
+
         this.setState({
-          items: JSON.parse(JSON.parse(data[day])[hallName])["breakfast"]
+          items: JSON.parse(JSON.parse(data[day])[hallName])[meal]
         });
         console.log(this.state);
       });
@@ -25,14 +28,18 @@ class Card extends Component {
 
   render() {
     let items = this.state.items.map(item => <li key={item}>{item}</li>);
-    return (
-      <div className="card col-4">
-        <div className="card-body">
-          <h5 className="card-title text-center">{this.state.hall}</h5>
-          <ul className="card-text">{items}</ul>
+    if (this.state.items.length) {
+      return (
+        <div className="card col-4">
+          <div className="card-body">
+            <h5 className="card-title text-center">{this.state.hall}</h5>
+            <ul className="card-text">{items}</ul>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <div></div>;
+    }
   }
 }
 

@@ -4,6 +4,7 @@ import "../custom.css";
 
 class CardCarousel extends Component {
   state = {
+    meal: this.props.value,
     halls: [
       { id: "AKERS", items: 0 },
       { id: "SNYDER_PHILLIPS", items: 0 },
@@ -23,7 +24,7 @@ class CardCarousel extends Component {
       <div className="container-fluid py-2">
         <div className="d-flex flex-row flex-nowrap">
           {this.state.halls.map(hall => (
-            <Card key={hall.id} id={hall.id} />
+            <Card key={hall.id} id={hall.id} value={this.state.meal} />
           ))}
         </div>
       </div>
