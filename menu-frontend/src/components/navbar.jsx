@@ -1,10 +1,26 @@
 import React, { Component } from "react";
 
-const NavBar = () => {
+const NavBar = ({ meal }) => {
+  const mStr = meal[0].toUpperCase() + meal.slice(1);
   return (
-    <header>
-      <h2 className="font-weight-light">Menu App</h2>
-      <h4 className="font-weight-light">{}</h4>
+    <header className="text-center">
+      <h2 className="font-weight-light">
+        <a class="text-dark" href="#">
+          Menu App
+        </a>
+      </h2>
+      <div className="dropdown">
+        <button
+          className="btn btn-secondary btn-lg dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          {mStr}
+        </button>
+      </div>
     </header>
   );
 };

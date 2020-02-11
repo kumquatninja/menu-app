@@ -33,7 +33,7 @@ class Card extends Component {
       items = "Closed for " + this.state.meal;
     }
     return (
-      <div className="card col-5">
+      <div className="card col-5 scroll shadow">
         <div className="card-body">
           <h5 className="card-title text-center">{this.state.hall}</h5>
           <ul className="card-text">{items}</ul>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Card from "./card";
+import ItemsCarousel from "react-items-carousel";
 import "../custom.css";
 
 class CardCarousel extends Component {
@@ -29,7 +30,7 @@ class CardCarousel extends Component {
   render() {
     return (
       <div className="container-fluid py-2">
-        <div className="d-flex flex-row flex-nowrap">
+        <div className="d-flex flex-row flex-wrap">
           {this.state.halls.map(hall => (
             <Card
               key={hall.id}

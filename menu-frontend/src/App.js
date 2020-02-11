@@ -8,7 +8,7 @@ class App extends Component {
   state = { day: "day_0", meal: "breakfast", menu: [] };
 
   getMeal = () => {
-    let hour = new Date().getHours();
+    const hour = new Date().getHours();
     let meal;
 
     if (hour <= 10) {
@@ -21,6 +21,13 @@ class App extends Component {
     return meal;
   };
 
+  constructor() {
+    super();
+    let meal = this.getMeal();
+    this.setState({ meal });
+    console.log(meal, this.state.meal);
+  }
+
   componentDidMount() {
     fetch("http://menu-app-msu.appspot.com/menus")
       .then(response => {
@@ -31,16 +38,15 @@ class App extends Component {
         let day = this.state.day;
 
         this.setState({
-          menu: data
+          menu: JSON.parse(data[day])
         });
-        //console.log(this.state.menu);
       });
   }
 
   render() {
     return (
       <React.Fragment>
-        <NavBar />
+        <NavBar meal={this.state.meal} />
         <CardCarousel
           value={this.getMeal()}
           day={this.state.day}
