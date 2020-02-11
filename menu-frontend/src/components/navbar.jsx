@@ -11,7 +11,7 @@ const NavBar = ({ meal }) => {
       </h2>
       <div className="dropdown">
         <button
-          className="btn btn-secondary btn-lg dropdown-toggle"
+          className="btn btn-secondary btn-lg dropdown-toggle font-weight-light"
           type="button"
           id="dropdownMenuButton"
           data-toggle="dropdown"

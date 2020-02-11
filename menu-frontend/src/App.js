@@ -23,9 +23,7 @@ class App extends Component {
 
   constructor() {
     super();
-    let meal = this.getMeal();
-    this.setState({ meal });
-    console.log(meal, this.state.meal);
+    this.state.meal = this.getMeal();
   }
 
   componentDidMount() {
