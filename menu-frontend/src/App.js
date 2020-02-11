@@ -10,7 +10,6 @@ class App extends Component {
   getMeal = () => {
     const hour = new Date().getHours();
     let meal;
-
     if (hour <= 10) {
       meal = "breakfast";
     } else if (hour <= 14) {
@@ -32,22 +31,17 @@ class App extends Component {
         return response.json();
       })
       .then(data => {
-        let meal = this.state.meal;
-        let day = this.state.day;
-
-        this.setState({
-          menu: JSON.parse(data[day])
-        });
+        console.log(JSON.parse(data[this.state.day]));
       });
   }
 
   render() {
+    console.log(this.state.menu);
     return (
       <React.Fragment>
         <NavBar meal={this.state.meal} />
         <CardCarousel
           value={this.getMeal()}
-          day={this.state.day}
           menu={this.state.menu}
           meal={this.getMeal()}
         />

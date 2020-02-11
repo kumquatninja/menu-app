@@ -5,7 +5,7 @@ const NavBar = ({ meal }) => {
   return (
     <header className="text-center">
       <h2 className="font-weight-light">
-        <a class="text-dark" href="#">
+        <a className="text-dark" href="#">
           Menu App
         </a>
       </h2>

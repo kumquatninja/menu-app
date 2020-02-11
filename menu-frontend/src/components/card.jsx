@@ -22,19 +22,22 @@ class Card extends Component {
         this.setState({
           items: JSON.parse(JSON.parse(data[day])[hallName])[meal]
         });
-        console.log(JSON.parse(JSON.parse(data[day])[hallName]));
-        //console.log(this.state);
       });
   }
 
   render() {
     let items = this.state.items.map(item => <li key={item}>{item}</li>);
+
+    console.log("Props", this.props);
+
     if (!this.state.items.length) {
       items = "Closed for " + this.state.meal;
     }
     return (
       <div className="card col-5 shadow">
-        <h5 className="card-title text-center">{this.state.hall}</h5>
+        <h5 className="card-title font-weight-light text-center">
+          {this.props.id}
+        </h5>
         <div className="card-body scroll">
           <ul className="card-text">{items}</ul>
         </div>

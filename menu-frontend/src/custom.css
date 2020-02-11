@@ -9,6 +9,7 @@
   top: 0;
   background-color: white;
   padding: 10px;
+  font-size: 24px;
 }
 
 .font-weight-light {
@@ -18,10 +19,6 @@
 
 .card {
   margin: 20px;
-}
-
-.card-title {
-  font-variant: small-caps;
 }
 
 .card ul {

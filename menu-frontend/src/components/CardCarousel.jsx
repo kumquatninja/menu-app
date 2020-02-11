@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Card from "./card";
-import ItemsCarousel from "react-items-carousel";
 import "../custom.css";
 
 class CardCarousel extends Component {
@@ -19,24 +18,17 @@ class CardCarousel extends Component {
     ]
   };
 
-  getItems = hall => {
-    //console.log(hall, this.props.day, this.props.meal);
-    let day = this.props.day;
-    let meal = this.props.meal;
-    let data = this.props.menu;
-    //console.log(JSON.parse(data[day]));
-  };
-
   render() {
+    console.log(this.props);
     return (
       <div className="container-fluid py-2">
-        <div className="d-flex flex-row flex-wrap">
+        <div className="d-flex justify-content-center flex-row flex-wrap centered">
           {this.state.halls.map(hall => (
             <Card
               key={hall.id}
               id={hall.id}
               value={this.props.meal}
-              items={this.getItems(hall.id)}
+              items={this.props.menu}
             />
           ))}
         </div>
