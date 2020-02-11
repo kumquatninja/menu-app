@@ -35,7 +35,7 @@ class Halls:
             self.dining_hall_dict["AKERS"] = f"https://eatatstate.msu.edu/menu/The%20Edge%20at%20Akers/all/{self.date}"
             self.dining_hall_dict["BRODY"] = f"https://eatatstate.msu.edu/menu/Brody%20Square/all/{self.date}"
             self.dining_hall_dict["CASE"] = f"https://eatatstate.msu.edu/menu/South%20Pointe%20at%20Case/all/{self.date}"
-            self.dining_hall_dict["HOLDEN"] = f"https://eatatstate.msu.edu/menu/Holden%20Dining%20Hall/all/all/{self.date}"
+            self.dining_hall_dict["HOLDEN"] = f"https://eatatstate.msu.edu/menu/Holden%20Dining%20Hall/all/{self.date}"
             self.dining_hall_dict["HOLMES"] = f"https://eatatstate.msu.edu/menu/Holmes%20Dining%20Hall/all/{self.date}"
             self.dining_hall_dict["LANDON"] = f"https://eatatstate.msu.edu/menu/Heritage%20Commons%20at%20Landon/all/{self.date}"
             self.dining_hall_dict["OWEN"] = f"https://eatatstate.msu.edu/menu/Thrive%20at%20Owen/all/{self.date}"
