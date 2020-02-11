@@ -22,24 +22,24 @@ class Card extends Component {
         this.setState({
           items: JSON.parse(JSON.parse(data[day])[hallName])[meal]
         });
-        console.log(this.state);
+        console.log(JSON.parse(JSON.parse(data[day])[hallName]));
+        //console.log(this.state);
       });
   }
 
   render() {
     let items = this.state.items.map(item => <li key={item}>{item}</li>);
-    if (this.state.items.length) {
-      return (
-        <div className="card col-4">
-          <div className="card-body">
-            <h5 className="card-title text-center">{this.state.hall}</h5>
-            <ul className="card-text">{items}</ul>
-          </div>
-        </div>
-      );
-    } else {
-      return <div></div>;
+    if (!this.state.items.length) {
+      items = "Closed for " + this.state.meal;
     }
+    return (
+      <div className="card col-5">
+        <div className="card-body">
+          <h5 className="card-title text-center">{this.state.hall}</h5>
+          <ul className="card-text">{items}</ul>
+        </div>
+      </div>
+    );
   }
 }
 

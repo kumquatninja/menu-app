@@ -1,22 +1,29 @@
 import React, { Component } from "react";
-import Card from "./Card";
+import Card from "./card";
 import "../custom.css";
 
 class CardCarousel extends Component {
   state = {
-    meal: this.props.value,
     halls: [
-      { id: "AKERS", items: 0 },
-      { id: "SNYDER_PHILLIPS", items: 0 },
-      { id: "CASE", items: 0 },
-      { id: "BRODY", items: 0 },
-      { id: "SHAW", items: 0 },
-      { id: "OWEN", items: 0 },
-      { id: "LANDON", items: 0 },
-      { id: "HOLDEN", items: 0 },
-      { id: "WILSON", items: 0 },
-      { id: "HOLMES", itmes: 0 }
+      { id: "AKERS", items: [] },
+      { id: "SNYDER_PHILLIPS", items: [] },
+      { id: "CASE", items: [] },
+      { id: "BRODY", items: [] },
+      { id: "SHAW", items: [] },
+      { id: "OWEN", items: [] },
+      { id: "LANDON", items: [] },
+      { id: "HOLDEN", items: [] },
+      { id: "WILSON", items: [] },
+      { id: "HOLMES", itmes: [] }
     ]
+  };
+
+  getItems = hall => {
+    //console.log(hall, this.props.day, this.props.meal);
+    let day = this.props.day;
+    let meal = this.props.meal;
+    let data = this.props.menu;
+    //console.log(JSON.parse(data[day]));
   };
 
   render() {
@@ -24,7 +31,12 @@ class CardCarousel extends Component {
       <div className="container-fluid py-2">
         <div className="d-flex flex-row flex-nowrap">
           {this.state.halls.map(hall => (
-            <Card key={hall.id} id={hall.id} value={this.state.meal} />
+            <Card
+              key={hall.id}
+              id={hall.id}
+              value={this.props.meal}
+              items={this.getItems(hall.id)}
+            />
           ))}
         </div>
       </div>

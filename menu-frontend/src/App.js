@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import CardCarousel from "./components/CardCarousel";
+import CardCarousel from "./components/cardcarousel";
+import Footer from "./components/stickyfooter";
+import NavBar from "./components/navbar";
 
 class App extends Component {
-  state = { meal: "breakfast" };
+  state = { day: "day_0", meal: "breakfast", menu: [] };
 
-  componentDidMount() {
-    let date = new Date().getDate();
-    let month = new Date().getMonth() + 1;
-    let year = new Date().getFullYear();
+  getMeal = () => {
     let hour = new Date().getHours();
     let meal;
 
@@ -17,20 +15,40 @@ class App extends Component {
       meal = "breakfast";
     } else if (hour <= 14) {
       meal = "lunch";
+    } else {
+      meal = "dinner";
     }
+    return meal;
+  };
 
-    console.log("Meal:", meal);
+  componentDidMount() {
+    fetch("http://menu-app-msu.appspot.com/menus")
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        let meal = this.state.meal;
+        let day = this.state.day;
 
-    this.setState({ meal: meal });
+        this.setState({
+          menu: data
+        });
+        //console.log(this.state.menu);
+      });
   }
 
   render() {
     return (
-      <header>
-        <h2 className="font-weight-light">Menu App</h2>
-        <h4 className="font-weight-light">{this.state.meal}</h4>
-        <CardCarousel value={this.state.meal} />
-      </header>
+      <React.Fragment>
+        <NavBar />
+        <CardCarousel
+          value={this.getMeal()}
+          day={this.state.day}
+          menu={this.state.menu}
+          meal={this.getMeal()}
+        />
+        <Footer />
+      </React.Fragment>
     );
   }
 }
