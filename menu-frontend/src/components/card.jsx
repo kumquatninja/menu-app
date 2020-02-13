@@ -34,7 +34,7 @@ class Card extends Component {
       items = "Closed for " + this.state.meal;
     }
     return (
-      <div className="card col-5 shadow">
+      <div className="card col-sm-5 shadow">
         <h5 className="card-title font-weight-light text-center">
           {this.props.id}
         </h5>

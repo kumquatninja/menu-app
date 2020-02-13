@@ -5,7 +5,31 @@ import Footer from "./components/stickyfooter";
 import NavBar from "./components/navbar";
 
 class App extends Component {
-  state = { day: "day_0", meal: "breakfast", menu: [] };
+  state = {
+    day: "day_0",
+    meal: "breakfast",
+    menu: [],
+    userPosition: [42.721202, -84.489528] // Default user position is holden hall
+  };
+
+  getLocation = () => {
+    if (navigator.geolocation) {
+      let location = navigator.geolocation.getCurrentPosition(
+        this.setUserPosition
+      );
+      console.log("User location", location);
+    }
+  };
+
+  setUserPosition = position => {
+    console.log(
+      "Latitidue",
+      position.coords.latitude,
+      "Longitude",
+      position.coords.longitude
+    );
+    this.setState({ userPosition: position });
+  };
 
   getMeal = () => {
     const hour = new Date().getHours();
@@ -33,6 +57,7 @@ class App extends Component {
       .then(data => {
         console.log(JSON.parse(data[this.state.day]));
       });
+    this.getLocation();
   }
 
   render() {
