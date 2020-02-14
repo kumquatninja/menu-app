@@ -9,6 +9,7 @@ const NavBar = ({ meal }) => {
           Menu App
         </a>
       </h2>
+      <h6>v0.1.0 - Alpha</h6>
       <div className="dropdown">
         <button
           className="btn btn-secondary btn-lg dropdown-toggle font-weight-light"

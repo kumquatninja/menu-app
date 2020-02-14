@@ -17,6 +17,11 @@
   text-align: center;
 }
 
+h6 {
+  font-variant: small-caps;
+  color: gray;
+}
+
 .card {
   margin: 20px;
 }

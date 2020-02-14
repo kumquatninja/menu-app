@@ -3,6 +3,7 @@ import "./App.css";
 import CardCarousel from "./components/cardcarousel";
 import Footer from "./components/stickyfooter";
 import NavBar from "./components/navbar";
+import { unstable_batchedUpdates } from "react-dom";
 
 class App extends Component {
   state = {
@@ -14,21 +15,22 @@ class App extends Component {
 
   getLocation = () => {
     if (navigator.geolocation) {
-      let location = navigator.geolocation.getCurrentPosition(
+      const location = navigator.geolocation.getCurrentPosition(
         this.setUserPosition
       );
-      console.log("User location", location);
+    } else {
+      console.log("Could not retrieve location info");
     }
   };
 
   setUserPosition = position => {
-    console.log(
-      "Latitidue",
-      position.coords.latitude,
-      "Longitude",
-      position.coords.longitude
-    );
-    this.setState({ userPosition: position });
+    const lat = position.coords.latitude;
+    const long = position.coords.longitude;
+    console.log("Latitidue", lat, "Longitude", long);
+    this.setState({
+      userPosition: [lat, long]
+    });
+    console.log("UWHIUAHWIDH", this.state.userPosition);
   };
 
   getMeal = () => {
@@ -47,6 +49,7 @@ class App extends Component {
   constructor() {
     super();
     this.state.meal = this.getMeal();
+    //this.getLocation();
   }
 
   componentDidMount() {
@@ -55,13 +58,14 @@ class App extends Component {
         return response.json();
       })
       .then(data => {
-        console.log(JSON.parse(data[this.state.day]));
+        //console.log(JSON.parse(data[this.state.day]));
       });
     this.getLocation();
   }
 
   render() {
-    console.log(this.state.menu);
+    //console.log(this.state.menu);
+    console.log("RENDER");
     return (
       <React.Fragment>
         <NavBar meal={this.state.meal} />
@@ -69,6 +73,7 @@ class App extends Component {
           value={this.getMeal()}
           menu={this.state.menu}
           meal={this.getMeal()}
+          position={this.state.userPosition}
         />
         <Footer />
       </React.Fragment>
