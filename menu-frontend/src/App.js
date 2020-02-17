@@ -30,7 +30,7 @@ class App extends Component {
     this.setState({
       userPosition: [lat, long]
     });
-    console.log("UWHIUAHWIDH", this.state.userPosition);
+    this.refs.cardcarousel.componentDidMount(); // updates card order after recieving new user position
   };
 
   getMeal = () => {
@@ -70,6 +70,7 @@ class App extends Component {
       <React.Fragment>
         <NavBar meal={this.state.meal} />
         <CardCarousel
+          ref="cardcarousel"
           value={this.getMeal()}
           menu={this.state.menu}
           meal={this.getMeal()}
