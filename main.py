@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask_cors import CORS, cross_origin
 from bs4 import BeautifulSoup
 # from apscheduler.schedulers.background import BackgroundScheduler
 from tasks import scraper
@@ -8,6 +9,8 @@ import json
 
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 '''
 sched = BackgroundScheduler(daemon=True)
@@ -31,6 +34,7 @@ def update_menus():
     return data
 
 @app.route("/menus")
+@cross_origin()
 def menus():
     with open('menus.json') as json_file:
         data = json.load(json_file)

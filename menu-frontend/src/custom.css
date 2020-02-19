@@ -1,0 +1,31 @@
+.scroll {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.card-title {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding: 10px;
+  font-size: 24px;
+}
+
+.font-weight-light {
+  font-variant: small-caps;
+  text-align: center;
+}
+
+h6 {
+  font-variant: small-caps;
+  color: gray;
+}
+
+.card {
+  margin: 20px;
+}
+
+.card ul {
+  list-style: none;
+}
