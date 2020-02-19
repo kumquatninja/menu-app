@@ -30,7 +30,9 @@ class App extends Component {
     this.setState({
       userPosition: [lat, long]
     });
-    this.refs.cardcarousel.componentDidMount(); // updates card order after recieving new user position
+    //this.refs.cardcarousel.componentDidMount(); // updates card order after recieving new user position
+    this.refs.cardcarousel.updateDistances();
+    this.refs.cardcarousel.sortbyDistance();
   };
 
   getMeal = () => {
