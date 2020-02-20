@@ -52,10 +52,11 @@ class App extends Component {
     super();
     this.state.meal = this.getMeal();
     //this.getLocation();
+    document.title = "Menu App";
   }
 
   componentDidMount() {
-    fetch("http://menu-app-msu.appspot.com/menus")
+    fetch("//menu-app-msu.appspot.com/menus")
       .then(response => {
         return response.json();
       })

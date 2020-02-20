@@ -10,7 +10,7 @@ class Card extends Component {
   };
 
   componentDidMount() {
-    fetch("http://menu-app-msu.appspot.com/menus")
+    fetch("//menu-app-msu.appspot.com/menus")
       .then(response => {
         return response.json();
       })
