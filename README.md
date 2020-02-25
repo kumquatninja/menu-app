@@ -12,8 +12,9 @@ Designed to provide a fast user experience so that a user can decide where to ea
 * HTML Geolocation
 * Bootstrap 4
 
-![Front-end Preview](https://github.com/kumquatninja/menu-app/blob/master/preview.png)
+<img src="https://github.com/kumquatninja/menu-app/blob/master/preview.png" width="480">
 ![Front-end Mockup](https://raw.githubusercontent.com/kumquatninja/menu-app/master/mockup.png)
 
 > P.S. Case hall is the Green Day of dining halls: many people's first foray into MSU dining, but still relevant and putting out hits years later
-![Green Day](https://snagfilms-a.akamaihd.net/3e/3c/dca1575b4129a9016979ad23cb0d/green-day.jpg | width=100)
+
+<img src="https://snagfilms-a.akamaihd.net/3e/3c/dca1575b4129a9016979ad23cb0d/green-day.jpg" width="480">
