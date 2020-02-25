@@ -12,3 +12,5 @@ Designed to provide a fast user experience so that a user can decide where to ea
 * Bootstrap 4
 
 ![Front-end Mockup](https://raw.githubusercontent.com/kumquatninja/menu-app/master/mockup.png)
+
+P.S. Case hall is the Green Day of dining halls: many people's first dining hall, but still relevant and putting out hits years later
