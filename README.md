@@ -1,7 +1,7 @@
 # The Menuapp 🍜
 by Parwesh Rallapalli and Philip Wang
 
-[Find out where to eat at MSU] (https://msu-menus.appspot.com)
+[Find out where to eat at MSU:](https://msu-menus.appspot.com) https://msu-menus.appspot.com
 
 A progressive web app composed of ReactJS and Flask RESTful API deployed as microservices on Google Cloud.
 Designed to provide a fast user experience so that a user can decide where to eat in as little time as possible.
@@ -13,7 +13,7 @@ Designed to provide a fast user experience so that a user can decide where to ea
 * Bootstrap 4
 
 <img src="https://github.com/kumquatninja/menu-app/blob/master/preview.png" width="480">
-![Front-end Mockup](https://raw.githubusercontent.com/kumquatninja/menu-app/master/mockup.png)
+<img src=https://raw.githubusercontent.com/kumquatninja/menu-app/master/mockup.png>
 
 > P.S. Case hall is the Green Day of dining halls: many people's first foray into MSU dining, but still relevant and putting out hits years later
 
