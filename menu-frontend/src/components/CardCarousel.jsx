@@ -51,7 +51,7 @@ class CardCarousel extends Component {
   sortbyDistance = () => {
     const halls = [...this.state.halls];
     const pos = this.props.position;
-    console.log("userposition", pos);
+    //console.log("userposition", pos);
     halls.sort(function(a, b) {
       return a["distance"] - b["distance"];
     });
@@ -73,11 +73,10 @@ class CardCarousel extends Component {
   componentDidMount() {
     this.updateDistances();
     this.sortbyDistance();
-    console.log(this.props.position);
   }
 
   render() {
-    //console.log(this.props);
+    //console.log(this.props.menus);
     return (
       <div className="container-fluid py-2">
         <div className="d-flex justify-content-center flex-row flex-wrap centered">
@@ -85,8 +84,8 @@ class CardCarousel extends Component {
             <Card
               key={hall.id}
               id={hall.id}
-              value={this.props.meal}
-              items={this.props.menu}
+              meal={this.props.meal}
+              menus={this.props.menus}
             />
           ))}
         </div>

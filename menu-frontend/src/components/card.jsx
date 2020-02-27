@@ -5,33 +5,47 @@ class Card extends Component {
   state = {
     hall: this.props.id,
     day: "day_0",
-    meal: this.props.value,
     items: []
   };
 
-  componentDidMount() {
-    fetch("//menu-app-msu.appspot.com/menus")
+  /*componentDidMount() {
+    fetch("https://menu-app-msu.appspot.com/menus")
       .then(response => {
         return response.json();
       })
       .then(data => {
         let hallName = this.state.hall;
         let day = this.state.day;
-        let meal = this.state.meal;
+        let meal = this.props.meal;
 
         this.setState({
           items: JSON.parse(JSON.parse(data[day])[hallName])[meal]
         });
       });
-  }
+    //let items = this.props.menus;
+    //console.log(items);
+  }*/
 
   render() {
-    let items = this.state.items.map(item => <li key={item}>{item}</li>);
+    //let meal = this.props.meal;
+    //console.log(meal);
+    //let items = this.state.items.map(item => <li key={item}>{item}</li>);
+    //console.log("Hall id", this.props.id);
+    /*if (this.props.menus) {
+      console.log(
+        "Card menus",
+        JSON.parse(this.props.menus[this.props.id])[this.props.meal]
+      );
+    }*/
+    let items = [];
+    if (this.props.menus) {
+      items = JSON.parse(this.props.menus[this.props.id])[
+        this.props.meal
+      ].map(item => <li key={item}>{item}</li>);
+    }
 
-    console.log("Props", this.props);
-
-    if (!this.state.items.length) {
-      items = "Closed for " + this.state.meal;
+    if (!items.length) {
+      items = "Closed for " + this.props.meal;
     }
     return (
       <div className="card col-sm-5 shadow">
